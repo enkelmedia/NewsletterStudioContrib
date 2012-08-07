@@ -31,24 +31,39 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NewsletterStudio">
-      <HintPath>..\Lib\NewsletterStudio.dll</HintPath>
+    <Reference Include="businesslogic">
+      <HintPath>..\Lib\Umbraco472\businesslogic.dll</HintPath>
+    </Reference>
+    <Reference Include="cms">
+      <HintPath>..\Lib\Umbraco472\cms.dll</HintPath>
+    </Reference>
+    <Reference Include="interfaces">
+      <HintPath>..\Lib\Umbraco472\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="NewsletterStudio, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Lib\NewsletterStudio1.3\NewsletterStudio.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="umbraco">
+      <HintPath>..\Lib\Umbraco472\umbraco.dll</HintPath>
+    </Reference>
+    <Reference Include="umbraco.DataLayer">
+      <HintPath>..\Lib\Umbraco472\umbraco.DataLayer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RenderTasks\RenderTaskExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubscriptionProviders\uCommerceSubscriptionProvider.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SubscriptionProviders\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

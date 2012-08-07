@@ -4,7 +4,7 @@ using NewsletterStudio.Services.RenderTasks;
 
 namespace NewsletterStudioContrib.RenderTasks
 {
-    public class RenderTaskExample : RenderTask 
+    public class RenderTaskExample : RenderTask
     {
 
         public override void ProcessPreRender(RenderResult renderResult, RenderTaskParameters parameters)
