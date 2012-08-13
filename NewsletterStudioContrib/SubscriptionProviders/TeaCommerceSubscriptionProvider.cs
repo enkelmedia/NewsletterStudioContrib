@@ -23,7 +23,7 @@ namespace NewsletterStudioContrib.SubscriptionProviders
             var listAll = new List<TeaReceiver>();
             IRecordsReader dr;
 
-            dr = Application.SqlHelper.ExecuteReader("select id, firstname, lastname, email, orderdate from TeaCommerce_Order where Email is not null ORDER BY OrderDate DESC");
+            dr = Application.SqlHelper.ExecuteReader("select id, firstname, lastname, email, orderdate FROM TeaCommerce_Order WHERE Email is not null AND isOrder=true ORDER BY OrderDate DESC");
 
             while (dr.Read())
             {
