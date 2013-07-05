@@ -40,8 +40,8 @@
     <Reference Include="interfaces">
       <HintPath>..\Lib\Umbraco472\interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="NewsletterStudio, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Lib\NewsletterStudio1.3\NewsletterStudio.dll</HintPath>
+    <Reference Include="NewsletterStudio">
+      <HintPath>..\Lib\NewsletterStudio\NewsletterStudio.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
