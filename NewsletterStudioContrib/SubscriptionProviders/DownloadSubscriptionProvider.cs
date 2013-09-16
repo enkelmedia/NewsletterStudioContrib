@@ -48,12 +48,15 @@ namespace NewsletterStudioContrib.SubscriptionProviders
 
             foreach (var email in arrEmails)
             {
-                list.Add(new Receiver()
+                if(NewsletterStudio.Common.IsValidEmail(email))
                 {
-                    DataProviderKey = email,
-                    Fullname = "",
-                    Email = email                    
-                });
+                    list.Add(new Receiver()
+                    {
+                        DataProviderKey = email,
+                        Fullname = "",
+                        Email = email                    
+                    });
+                }
             }
 
             return list;
