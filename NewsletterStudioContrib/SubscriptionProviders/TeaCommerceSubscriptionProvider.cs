@@ -23,15 +23,15 @@ namespace NewsletterStudioContrib.SubscriptionProviders
             var listAll = new List<TeaReceiver>();
             IRecordsReader dr;
 
-            dr = Application.SqlHelper.ExecuteReader("select id, firstname, lastname, email, orderdate FROM TeaCommerce_Order WHERE Email is not null AND isOrder=true ORDER BY OrderDate DESC");
+            dr = Application.SqlHelper.ExecuteReader("select Id, Firstname, Lastname, Email, DateFinalized FROM TeaCommerce_Order WHERE Email is not null AND DateFinalized != ''");
 
             while (dr.Read())
             {
 
-                var dataProviderKey = dr.Get<int>("id").ToString();
-                var email = dr.Get<string>("email");
-                var fullname = string.Format("{0} {1}", dr.Get<string>("firstname"), dr.Get<string>("lastname"));
-                var orderDate = dr.Get<DateTime>("orderdate");
+                var dataProviderKey = dr.Get<int>("Id").ToString();
+                var email = dr.Get<string>("Email");
+                var fullname = string.Format("{0} {1}", dr.Get<string>("Firstname"), dr.Get<string>("Lastname"));
+                var orderDate = dr.Get<DateTime>("DateFinalized");
 
                 // Not in the list?
                 if (Common.IsValidEmail(email) && listAll.Count(x => x.Email == email) == 0)
