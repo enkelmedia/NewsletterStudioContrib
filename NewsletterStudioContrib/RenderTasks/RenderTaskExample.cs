@@ -31,7 +31,7 @@ namespace NewsletterStudioContrib.RenderTasks
         }
 
 
-        public override void ProcessUniqItem(RenderResult renderResult, RenderTaskUniqItemParameters parameters)
+        public override void ProcessUniqueItem(RenderResult renderResult, RenderTaskUniqItemParameters parameters)
         {
             // This method is called once for every subscriber. It will give you the tracking item to get personal data the subscriber.
             // The only thing we know about the reciver at this time is its email and name found in emailTrackItem and we'll aslso give you
