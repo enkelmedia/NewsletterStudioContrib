@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsletterStudioContrib", "NewsletterStudioContrib\NewsletterStudioContrib.csproj", "{1F00BD80-9B90-4967-A3CC-BEFA3D928C04}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsletterStudioContrib", "NewsletterStudioContrib.csproj", "{1F00BD80-9B90-4967-A3CC-BEFA3D928C04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
