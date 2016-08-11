@@ -81,6 +81,12 @@ namespace NewsletterStudioContrib.SubscriptionProviders
             // Just returns true as this is not implemented. Could be stored as a property on a Umbraco member or in a custom table.
             return true;
         }
+
+        public override bool Unsubscribe(string email, string listItemId)
+        {
+            // Just returns true as this is not implemented. Could be stored as a property on a Umbraco member or in a custom table.
+            return true;
+        }
     }
 
     public class TeaReceiver : Receiver

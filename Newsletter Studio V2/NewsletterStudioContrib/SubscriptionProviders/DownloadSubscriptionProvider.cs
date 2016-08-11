@@ -69,6 +69,10 @@ namespace NewsletterStudioContrib.SubscriptionProviders
             return true;
         }
 
-        
+        // Added in Newsletter Studio 2.1.0 to make it possible to unsubscribe from a specific list id.
+        public override bool Unsubscribe(string email, string subscriptionId)
+        {
+            return true;
+        }
     }
 }
