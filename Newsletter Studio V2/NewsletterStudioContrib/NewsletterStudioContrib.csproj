@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BounceManagement\NewsletterBounceHelper.cs" />
     <Compile Include="Factory\BootstrapNewsletterStudio.cs" />
     <Compile Include="Factory\CustomGlobalFactory.cs" />
     <Compile Include="Factory\DemoMailingListRepository.cs" />
