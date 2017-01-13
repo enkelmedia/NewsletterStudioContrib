@@ -273,6 +273,7 @@
     <Compile Include="Factory\CustomGlobalFactory.cs" />
     <Compile Include="Factory\DemoMailingListRepository.cs" />
     <Compile Include="Factory\SuperJsonEncoder.cs" />
+    <Compile Include="Programming\CreateNewsletter.cs" />
     <Compile Include="RenderTasks\RenderTaskExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubscriptionProviders\DownloadSubscriptionProvider.cs" />
