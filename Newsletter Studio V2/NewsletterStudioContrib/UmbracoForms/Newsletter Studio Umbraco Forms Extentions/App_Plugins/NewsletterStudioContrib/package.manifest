@@ -1,0 +1,8 @@
+﻿{
+  "javascript": [
+    "~/App_Plugins/NewsletterStudioContrib/FormsChecklistPrevalue/mailinglist.controller.js"
+  ],
+  "css": [
+    "~/App_Plugins/NewsletterStudioContrib/NewsletterStudioContrib.css"
+  ]
+}

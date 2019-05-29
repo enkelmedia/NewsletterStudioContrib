@@ -55,6 +55,9 @@
     <Reference Include="controls, Version=1.0.6634.25794, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\UmbracoCms.Core.7.9.2\lib\net45\controls.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\UmbracoForms.Core.7.1.1\lib\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Examine, Version=0.1.89.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Examine.0.1.89\lib\net45\Examine.dll</HintPath>
     </Reference>
@@ -200,6 +203,21 @@
     <Reference Include="umbraco.editorControls, Version=1.0.6634.25799, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\UmbracoCms.Core.7.9.2\lib\net45\umbraco.editorControls.dll</HintPath>
     </Reference>
+    <Reference Include="Umbraco.Forms.Core, Version=7.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\UmbracoForms.Core.7.1.1\lib\Umbraco.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Core.Providers, Version=7.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\UmbracoForms.Core.7.1.1\lib\Umbraco.Forms.Core.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web, Version=7.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\UmbracoForms.Core.7.1.1\lib\Umbraco.Forms.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Forms.Web.XmlSerializers, Version=7.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\UmbracoForms.Core.7.1.1\lib\Umbraco.Forms.Web.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="Umbraco.Licensing, Version=2.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\UmbracoForms.Core.7.1.1\lib\Umbraco.Licensing.dll</HintPath>
+    </Reference>
     <Reference Include="umbraco.MacroEngines, Version=1.0.6634.25799, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\UmbracoCms.Core.7.9.2\lib\net45\umbraco.MacroEngines.dll</HintPath>
     </Reference>
@@ -224,12 +242,23 @@
     <Compile Include="SubscriptionProviders\DownloadSubscriptionProvider.cs" />
     <Compile Include="SubscriptionProviders\TeaCommerceSubscriptionProvider.cs" />
     <Compile Include="SubscriptionProviders\uCommerceSubscriptionProvider.cs" />
+    <Compile Include="UmbracoForms\Newsletter Studio Umbraco Forms Extentions\App_Plugins\NewsletterStudioContrib\FormsChecklistPrevalue\CamelCaseController.cs" />
+    <Compile Include="UmbracoForms\Newsletter Studio Umbraco Forms Extentions\App_Plugins\NewsletterStudioContrib\FormsChecklistPrevalue\MailingListsController.cs" />
+    <Compile Include="UmbracoForms\Newsletter Studio Umbraco Forms Extentions\Forms\PreValueSource\NewsletterStudioPrevalusSource.cs" />
+    <Compile Include="UmbracoForms\Newsletter Studio Umbraco Forms Extentions\Forms\Workflows\NewsletterSubscribe.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Factory\README.md" />
     <None Include="packages.config" />
     <None Include="SubscriptionProviders\README.md" />
+    <None Include="UmbracoForms\Newsletter Studio Umbraco Forms Extentions\App_Plugins\NewsletterStudioContrib\package.manifest" />
+    <None Include="UmbracoForms\readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UmbracoForms\Newsletter Studio Umbraco Forms Extentions\App_Plugins\NewsletterStudioContrib\FormsChecklistPrevalue\mailinglist.controller.js" />
+    <Content Include="UmbracoForms\Newsletter Studio Umbraco Forms Extentions\App_Plugins\NewsletterStudioContrib\FormsChecklistPrevalue\mailinglists.html" />
+    <Content Include="UmbracoForms\Newsletter Studio Umbraco Forms Extentions\App_Plugins\NewsletterStudioContrib\NewsletterStudioContrib.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />

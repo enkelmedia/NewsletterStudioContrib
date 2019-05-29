@@ -1,0 +1,12 @@
+﻿<div ng-controller="NewsletterStudioContrib.FormsChecklistPrevalue.MailinglistsController" 
+     class="ec-checkboxlist">
+
+    <label ng-repeat="list in mailinglists">
+        <input type="checkbox"
+               name="mailingLists"
+               value="{{list.name}}"
+               ng-checked="{{list.selected}}"
+               ng-click="toggleSelection(list)"> {{list.name}}
+    </label>
+
+</div>
