@@ -29,7 +29,7 @@ After your providers is created you need to configure Newsletter Studio to use i
 To configure the DownloadSubscriptionProvider from the examples above, add a element like this:
 
 ``` xml 
-<provider name="CustomProvider" type="NewsletterStudioContrib.SubscriptionProviders.DownloadSubscriptioProvider, NewsletterStudioContrib" /> 
+<provider name="CustomProvider" type="NewsletterStudioContrib.SubscriptionProviders.DownloadSubscriptionProvider, NewsletterStudioContrib" /> 
 ```
 
 The logic is:
@@ -42,4 +42,4 @@ In the example with the DownloadSubscriptionProvider
 
 **The namespace**: NewsletterStudioContrib.SubscriptionProviders
 
-**Class name**: DownloadSubscriptioProvider
+**Class name**: DownloadSubscriptionProvider
