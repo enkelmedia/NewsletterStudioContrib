@@ -19,9 +19,9 @@ namespace NewsletterStudioContrib.Programming
         /// <returns></returns>
         private Newsletter CopyToNew(int newsletterId, string name)
         {
-            var _container = GlobalFactory.Current;
+            var container = GlobalFactory.Current;
 
-            Newsletter byId = _container.NewsletterRepository.GetById(newsletterId);
+            Newsletter byId = container.NewsletterRepository.GetById(newsletterId);
             Newsletter newsletter = new Newsletter();
             newsletter.Name = name;
             newsletter.MessageBody = byId.MessageBody;
@@ -41,9 +41,9 @@ namespace NewsletterStudioContrib.Programming
         /// <exception cref="Exception">NS Template with name 'Couponing 2017 hasn't been found'</exception>
         private void PrepareNSFromTemplate()
         {
-            var _container = GlobalFactory.Current;
+            var container = GlobalFactory.Current;
 
-            var templateNs = _container.NewsletterRepository.GetBy("Couponing 2017").FirstOrDefault();
+            var templateNs = container.NewsletterRepository.GetBy("Couponing 2017").FirstOrDefault();
 
 
             if (templateNs == null)
@@ -52,16 +52,11 @@ namespace NewsletterStudioContrib.Programming
             }
             Newsletter ns = this.CopyToNew(templateNs.Id, templateNs.Name);
 
-            ns.SubscriptionAlias = "SubscriptionProvider_1";
-
-            //ns.Status = DateTime.Now;
-            var sendDate = DateTime.Now;
-            sendDate = sendDate.AddHours(2);   //delay on purpose
-            ns.ScheduledSendDate = sendDate;
-            ns.CreatedDate = sendDate; // Setting the date to now so it will be send right away
+            ns.SubscriptionAlias = "NewsletterStudioSubscriptionProvider_1"; // Adding built in list with Id 1
+            ns.ScheduledSendDate = DateTime.Now.AddHours(2);
 
             // Save to database
-            _container.NewsletterRepository.Save(ns);
+            container.NewsletterRepository.Save(ns);
         }
 
 
@@ -81,14 +76,10 @@ namespace NewsletterStudioContrib.Programming
             ns.SenderName = ConfigManager.NewsletterStudio.SenderDefaultsForced ? ConfigManager.NewsletterStudio.SenderDefaultName : "Your sender name";
             ns.Status = 0;
             ns.Initialized = false;
-            //ns.CreatedByUserId = 0;
-            ns.SubscriptionAlias = "SubscriptionProvider_1";
+            ns.SubscriptionAlias = "NewsletterStudioSubscriptionProvider_1"; // Adding built in list with Id 1
+            
+            ns.ScheduledSendDate = DateTime.Now.AddHours(2); // Will be sent in two hours
 
-            //ns.Status = DateTime.Now;
-            var sendDate = DateTime.Now;
-            sendDate = sendDate.AddHours(2);   //delay on purpose
-            ns.ScheduledSendDate = sendDate;
-            ns.CreatedDate = sendDate; // Setting the date to now so it will be send right away
 
             // Save to database
             _container.NewsletterRepository.Save(ns);
