@@ -18,8 +18,10 @@ Umbraco version: 8
 
 ## [Newsletter Studio 2](Newsletter%20Studio%20V2)
 Umbraco version: 7+
+
 Contrib-projekt is currently compiled against Newsletter Studio 2.1.5
 
 ## [Newsletter Studio 1](Newsletter%20Studio%20V1)
 Umbraco version: 4-6
+
 Contrib-projekt is currently compiled against Newsletter Studio 1.4.3
