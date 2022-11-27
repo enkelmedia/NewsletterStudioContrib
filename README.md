@@ -4,7 +4,7 @@ A contribution project for Newsletter Studio for Umbraco. Will contain common ex
 
 There are two folders in this project - one applies to version 1 of Newsletter Studio (for Umbraco 4-6) and the other to version 2 o Newsletter Studio (Umbraco 7+).
 
-## [Newsletter Studio 11](newsletter-studio-v11)
+## [Newsletter Studio 11](Newsletter%20Studio%20V2)
 Umbraco version: 11
 
 ## Newsletter Studio 10
