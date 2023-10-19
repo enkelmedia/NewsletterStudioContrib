@@ -11,3 +11,5 @@ The website is configured with unattended install and this default backoffice-us
 
 Email: admin@demo.com
 Pass: 1234567890
+
+**NOTE!** Since the Umbraco-database is created when you run the website the first time most of the extensions need to be activated/allowed in Administration -> Workspace. This goes for things like `Themes`, `Recipient List Providers`, `Merge Field Providers`.
