@@ -3,6 +3,7 @@ using NewsletterStudio.Core.Rendering;
 using NewsletterStudio.Core.Rendering.MergeFields;
 using NewsletterStudio.Web.Composing;
 using Umbraco.Cms.Core.Composing;
+using Umbraco.Cms.Core.Web;
 
 namespace Demo.Web.Features.Recipients;
 
@@ -16,6 +17,7 @@ public class RecipientListProviderComposer : IComposer
 
 public class InMemoryRecipientListProvider : IRecipientListProvider
 {
+    private readonly IUmbracoContextFactory _umbracoContextFactory;
     public string DisplayName => "Demo Provider";
 
     public string DisplayNameLocalizationKey => "site/demoProvider";
@@ -23,6 +25,13 @@ public class InMemoryRecipientListProvider : IRecipientListProvider
     public string Prefix => "ex";
 
     public bool CanRedirectToEdit => false;
+
+    public InMemoryRecipientListProvider(IUmbracoContextFactory umbracoContextFactory)
+    {
+        // You can inject dependencies in the constructor if needed.
+        // Providers are created as Singletons.
+        _umbracoContextFactory = umbracoContextFactory;
+    }
 
     /// <summary>
     /// Called when we present available lists to the users, e.g. in the last step
