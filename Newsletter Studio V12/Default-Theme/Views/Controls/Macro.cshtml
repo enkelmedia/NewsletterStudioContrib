@@ -1,0 +1,7 @@
+﻿@model NewsletterStudio.Core.Rendering.ViewModels.ControlWithEmailViewModel
+
+@if (Model.Model is NewsletterStudio.Core.Editor.Controls.Macro.MacroEmailControlViewModel macro)
+{
+    @Html.Raw(macro.Html)
+}
+
