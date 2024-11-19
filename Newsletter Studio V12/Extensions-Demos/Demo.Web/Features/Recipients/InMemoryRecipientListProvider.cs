@@ -18,6 +18,7 @@ public class RecipientListProviderComposer : IComposer
 public class InMemoryRecipientListProvider : IRecipientListProvider
 {
     private readonly IUmbracoContextFactory _umbracoContextFactory;
+
     public string DisplayName => "Demo Provider";
 
     public string DisplayNameLocalizationKey => "site/demoProvider";
@@ -29,7 +30,8 @@ public class InMemoryRecipientListProvider : IRecipientListProvider
     public InMemoryRecipientListProvider(IUmbracoContextFactory umbracoContextFactory)
     {
         // You can inject dependencies in the constructor if needed.
-        // Providers are created as Singletons.
+        // Providers are created as Singletons, keep this in mind when
+        // injecting your dependencies.
         _umbracoContextFactory = umbracoContextFactory;
     }
 
