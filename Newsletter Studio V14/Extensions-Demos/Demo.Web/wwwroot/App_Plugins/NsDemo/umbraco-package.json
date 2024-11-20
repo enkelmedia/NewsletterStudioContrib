@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../umbraco-package-schema.json",
+  "name": "NsDemo",
+  "version": "14.0.0",
+  "extensions": [
+    {
+      "type": "entryPoint",
+      "alias": "NsDemo.EntryPoint",
+      "name": "NsDemo Entry Point",
+      "js": "/App_Plugins/NsDemo/dist/ns-demo.js?v1400",
+      "weight": 13000
+    }
+  ]
+}

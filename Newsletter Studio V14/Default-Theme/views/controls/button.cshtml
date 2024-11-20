@@ -1,0 +1,75 @@
+﻿@model NewsletterStudio.Core.Rendering.ViewModels.ControlWithEmailViewModel
+@using NewsletterStudio.Core.Extensions;
+@using Umbraco.Extensions
+@{
+    var settings = Model.Email.Settings;
+}
+
+@if (Model.Model is NewsletterStudio.Core.Editor.Controls.Button.ButtonEmailControlViewModel btn)
+{
+    var textColor = btn.TextColor.IfEmpty(() => settings.ControlButtonTextColor);
+    var buttonBackground = btn.BackgroundColor.IfEmpty(() => settings.ControlButtonBackgroundColor);
+
+    var buttonPadding = settings.Get("controlButton" + btn.ButtonSize.ToFirstUpper() + "Padding");
+    var buttonFontSize = settings.Get("controlButton" + btn.ButtonSize.ToFirstUpper() + "FontSize");
+    
+    /*
+     * CH106
+     * Padding: We need to set the "lowest" padding on the button as outlook will only apply one padding around the a-tag
+     *          We can set any additional padding on the wrapping td (example below) this would work in outlook as well.
+     */
+    
+    if (!btn.IsInverted)
+    {
+        /* Standard Button */
+        <table>
+            <tr>
+                <td>
+                    <table class="button__table" align="@btn.Align">
+                        <tr>
+                            <td class="button__cell" 
+                                align="center" 
+                                style="background-color: @buttonBackground; mso-padding-alt:@buttonPadding" 
+                                bgcolor="@buttonBackground">
+                                <a href="@Html.Raw(btn.ButtonUrl)" 
+                                   class="button__link" 
+                                   style="color: @textColor; font-size: @buttonFontSize; text-decoration: none; display: inline-block; padding: @buttonPadding; mso-padding-alt:0px;">
+                                    <span class="button__text" style="color: @textColor; text-decoration: none;">@btn.ButtonText</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        /* Inverted */
+        /* We would need the border to be the same color as the background. Will NOT work if we have a background image.*/
+        
+        <table>
+            <tr>
+                <td>
+                    <table class="button__table" align="@btn.Align">
+                        <tr>
+                            <td class="button__cell" align="center"
+                                style="background-color: transparent; border: 2px solid @btn.BackgroundColor; mso-padding-alt: @buttonPadding;" 
+                                bgcolor="transparent">
+
+                                <a href="@Html.Raw(btn.ButtonUrl)" 
+                                   class="button__link" 
+                                   style="color: @textColor; font-size: @buttonFontSize; text-decoration: none; display: inline-block; padding: @buttonPadding; mso-padding-alt: 0px;">
+                                    <span class="button__text" style="color: @textColor; text-decoration: none;">@btn.ButtonText</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+    }
+
+}
+
