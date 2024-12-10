@@ -13,8 +13,6 @@ export class DemoEmailEditorHalloEditElement extends NsEmailEditorControlEditUiB
         });
     }
 
-    //TODO: Update event parameter to use NsPaddingChangedEvent
-
     render(){
         return html`
             <div>

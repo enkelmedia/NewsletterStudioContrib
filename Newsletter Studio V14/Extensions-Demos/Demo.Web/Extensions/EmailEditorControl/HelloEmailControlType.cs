@@ -5,7 +5,8 @@ using NewsletterStudio.Core.Rendering;
 
 namespace Demo.Web.Extensions.EmailEditorControl;
 
-//NOTE! Formatting here is made to fit the snippets on the website to avoid horizontal scrolling
+//NOTE! Formatting here is made to fit the snippets on the website to avoid
+//      horizontal scrolling
 
 public class HelloEmailControlType 
     : EmailControlTypeBase<HelloEmailControlData, HelloEmailControlViewModel>
@@ -84,8 +85,8 @@ public class HelloEmailControlType
         EmailType emailType
         )
     {
-        // This could be used to limit the usage of a control type to only be available
-        // to campaigns or transactional emails.
+        // This could be used to limit the usage of a control type to only be
+        // available to campaigns or transactional emails.
 
         return true;
     }
