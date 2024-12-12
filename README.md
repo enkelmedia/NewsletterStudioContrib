@@ -2,7 +2,7 @@
 
 A contribution project for Newsletter Studio for Umbraco. Will contain common extension code and examples of how to implement subscription providers and render tasks that connects to other plugins. We'll also share the source of some of the core Render tasks.
 
-## [Newsletter Studio 4](Newsletter%20Studio%20V14)
+## [Newsletter Studio 14](Newsletter%20Studio%20V14)
 Umbraco version: 14
 
 ## [Newsletter Studio 12 & 13](Newsletter%20Studio%20V12)
