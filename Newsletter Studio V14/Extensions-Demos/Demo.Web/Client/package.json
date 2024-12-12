@@ -3,11 +3,10 @@
   "private": true,
   "version": "14.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
+  "scripts": {    
     "build": "tsc && vite build --emptyOutDir",
     "watch": "tsc && vite build --watch",
-    "preview": "vite preview"
+    "build:dev" : "tsc && vite build --mode development --emptyOutDir"
   },
   "devDependencies": {
     "@umbraco-cms/backoffice": "^14.3.0",
