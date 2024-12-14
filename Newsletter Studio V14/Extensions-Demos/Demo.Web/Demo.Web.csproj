@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NewsletterStudio" Version="14.0.0-rc1" />
-    <PackageReference Include="NewsletterStudio.Core" Version="14.0.0-rc1" />
+    <PackageReference Include="NewsletterStudio" Version="14.0.0" />
+    <PackageReference Include="NewsletterStudio.Core" Version="14.0.0" />
     <PackageReference Include="Umbraco.Cms" Version="14.3.1" />
     <PackageReference Include="uSync" Version="14.2.3" />
   </ItemGroup>
