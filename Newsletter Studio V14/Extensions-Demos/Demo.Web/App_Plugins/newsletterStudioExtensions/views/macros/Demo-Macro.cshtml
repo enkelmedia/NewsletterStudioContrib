@@ -1,0 +1,34 @@
+﻿@model NewsletterStudio.Core.Editor.Controls.Macro.EmailMacroViewModel
+
+<p>Demo cshtml-Macro Rendering</p>
+
+<strong>Email</strong><br/>
+@Model.RecipientDataModel.Email
+
+<strong>Merge Fields</strong><br/>
+<ul>
+    @foreach (var field in Model.RecipientDataModel.MergeFields)
+    {
+        <li>
+            @field.Placeholder: @field.Value
+        </li>
+    }
+</ul>
+
+<strong>Transactional Model</strong><br/>
+Has Model: @(Model.TransactionalModel == null ? "No" : "Yes")
+
+@if (Model.TransactionalModel != null)
+{
+    <text>Model Type: @Model.TransactionalModel.GetType() </text>
+}
+
+@*
+Example of how to look for a given Transactional Model if the macro needs to read data from the model
+
+@if (Model.TransactionalModel is ForgotPasswordModel data)
+{
+    <p>Data from model: @data.Data.Name</p>
+}
+*@
+
