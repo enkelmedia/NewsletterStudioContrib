@@ -480,3 +480,8 @@ umbraco-package-schema.json
 
 # Media files
 /wwwroot/media/
+
+# Demo-site specific stuff
+wwwroot/css/Newsletter-Studio.css
+App_Plugins/newsletterStudioExtensions/views/macros/Demo-Macro.cshtml
+Views/Partials/NewsletterStudioSignup.cshtml
