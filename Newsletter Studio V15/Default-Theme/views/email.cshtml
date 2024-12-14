@@ -1,0 +1,417 @@
+@using NewsletterStudio.Core
+@using NewsletterStudio.Core.Editor.Controls
+@using NewsletterStudio.Core.Editor.Controls.Button
+@using NewsletterStudio.Core.Editor.Controls.Image
+@using NewsletterStudio.Core.Editor.Controls.Text
+@using NewsletterStudio.Core.Extensions
+@using NewsletterStudio.Core.Rendering
+@using NewsletterStudio.Core.Rendering.ViewModels
+@model NewsletterStudio.Core.Rendering.ViewModels.EmailContentViewModel
+@{
+    
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+</head>
+<head>
+    
+    @if (Model.RenderingMode == RenderingMode.Preview)
+    {
+        @*Renders nicer scrollbars for iframe preview *@
+        
+        <style>
+            
+          ::-webkit-scrollbar {
+                width: 5px;
+                height: 8px;
+                border-radius: 20px;
+                background-color: transparent;
+            }
+        
+           ::-webkit-scrollbar-thumb {            
+           background: #ebebeb;
+                border-radius: 20px;
+            }
+        
+        </style>
+    }
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<![endif]-->
+    
+    @* Fonts - Google Fonts *@
+    @{
+        var googleFontsQueryString = Model.GetGoogleFontsUrl();
+    }
+    @if (!string.IsNullOrEmpty(googleFontsQueryString))
+    {
+        <link href="https://fonts.googleapis.com/css?family=@googleFontsQueryString" rel="stylesheet" type="text/css">
+    }
+    
+    @* Fonts - Custom FontFaceDeclarations  *@
+    @{
+        var customFontFace = Model.GetCustomFontFaceHtml();
+    }
+    
+    @if (!string.IsNullOrEmpty(customFontFace))
+    {
+        <style type="text/css">
+            @Html.Raw(customFontFace)
+        </style>
+    }
+
+    <style type="text/css" id="ignore">
+
+        * {
+            text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            mso-line-height-rule: exactly;
+        }
+
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        .ReadMsgBody,
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+    </style>
+    @* Does not seem to have any effect
+        <!--[if gte mso 9]>
+          <style type="text/css">
+          li { text-indent: -1em; }
+          table td { border-collapse: collapse; }
+          </style>
+          <![endif]-->
+    *@
+    <title>
+        @Model.Subject
+    </title>
+    <style>
+        @@media only screen and (max-width: 600px) {
+            .column,
+            .column-filler {
+                box-sizing: border-box;
+                float: left;
+            }
+
+            .col-sm-12 {
+                display: block;
+                width: 100% !important;
+            }
+            /* make images good on mobile */
+            .col-sm-12 img {
+                width: 100% !important;
+            }
+            /* reset double padding. NOTE! This can be fixes in our on version later on  */
+            .block {
+                padding: 0 !important;
+            }
+        }
+    </style>
+
+    <style>
+
+        /* HTML Attribute styles */
+
+        /* Inline attributes */
+        table {
+            -premailer-border: 0;
+            -premailer-cellpadding: 0;
+            -premailer-cellspacing: 0;
+            -premailer-width: 100%;
+        }
+
+        .button__table {
+            -premailer-width: auto;
+        }
+
+        /* <!-- style moved from inline --> */
+
+        table.body {
+            margin: 0;
+            width: 100%;
+        }
+
+        .container__table {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .container__cell {
+            -premailer-width: 100%;
+            -premailer-align: left;
+            -premailer-valign: top;
+        }
+
+        .row__table {
+            table-layout: fixed;
+        }
+        
+        /* Row and cell backgrounds */
+        .row_wrapper_cell,
+         .container__cell
+         {
+            background-position: center;
+            background-size: cover;
+        }
+
+        .column {
+            -premailer-align: left;
+            -premailer-valign: top;
+        }
+
+        .block__cell {
+            -premailer-width: 100%;
+            -premailer-align: left;
+            -premailer-valign: top;
+        }
+        
+
+        @* Styles with settings from theme or email settings *@
+        .body__content, p {
+            font-family: @Html.Raw(Model.Settings.ControlTextFontFamily);
+            font-size: @Model.Settings.ControlTextFontSize;
+            line-height: 1em;
+        }
+
+        h1 {
+            font-family: @Html.Raw(Model.Settings.ControlTextHeading1FontFamily);
+            font-size: @Model.Settings.ControlTextHeading1FontSize;
+            line-height: 1em;
+            mso-line-height-rule:exactly;
+        }
+
+        h2 {
+            font-family: @Html.Raw(Model.Settings.ControlTextHeading2FontFamily);
+            font-size: @Model.Settings.ControlTextHeading2FontSize;
+            line-height: 1em;        
+        }
+
+        h3 {
+            font-family: @Html.Raw(Model.Settings.ControlTextHeading3FontFamily);
+            font-size: @Model.Settings.ControlTextHeading3FontSize;
+            line-height: 1em;
+        }
+
+        p,h1,h2,h3 {
+            color:@Model.Settings.ControlTextTextColor;
+            mso-line-height: exactly; 
+            line-height: 100%; 
+            font-weight: normal;
+        }
+        h1,h2,h3 {
+            margin: 10px 0;
+        }
+        
+        p {
+            line-height: 150%; /* this will look OK in Outlook (a litle to high) but will look fine in other clients */
+            margin: 0 0 10px;
+        }
+        li {
+            line-height: 150%;
+        }
+        a {
+            color:@Model.Settings.ControlTextLinkColor;
+        }
+        .button__link {
+            font-family: @Html.Raw(Model.Settings.ControlButtonFontFamily);
+        }
+        
+    </style>
+    
+    <!-- content -->
+    <!--[if gte mso 9]><xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml><![endif]-->
+</head>
+<body class="body" style="background-color: @Model.Settings.BackgroundColor;">
+
+@if(!string.IsNullOrEmpty(Model.PreviewText))
+{
+    <div style="display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; width: 0px; opacity: 0; overflow: hidden;">
+    @Model.PreviewText       
+    </div>
+}
+<table class="bodyTable" role="presentation" width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; background-color: @Model.Settings.BackgroundColor; margin: 0;" bgcolor="@Model.Settings.BackgroundColor">
+        <tr>
+            <td class="body__content" align="left" width="100%" valign="top" style="">
+
+                @foreach (var row in Model.Rows)
+                {
+                    @* rows can be with or without background-color/image, always have a wrapper as well.*@
+
+                    <table>
+                        <tr>
+                            <td class="row_wrapper_cell"
+                                style="@(row.FullWidth ? "background-color:" + row.BackgroundColor.IfEmpty(()=>Model.Settings.RowBackgroundColor) : "")"
+                                @((row.FullWidth && !string.IsNullOrEmpty(row.BackgroundImageX2)) ? "background=" + row.BackgroundImageX2 : "")>
+
+                                @if (row.FullWidth && !string.IsNullOrEmpty(row.BackgroundImage))
+                                {
+                                    <!--[if gte mso 9]>
+                                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent: 1000;">
+                                        <v:fill type="tile" src="@row.BackgroundImage" color="@row.BackgroundColor" />
+                                        <v:textbox style="mso-fit-shape-to-text: true" inset="0,0,0,0">
+                                    <![endif]-->
+                                }
+
+
+                                <!--[if mso | IE]>
+                                    <table class="container__table__ie" role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin-right: auto; margin-left: auto; width: 600px" width="600" align="center">
+                                    <tr>
+                                    <td> <![endif]-->
+
+                                <table class="container__table">
+                                    <tr>
+                                        <td class="container__cell"
+                                            style="@(!row.FullWidth ? "background-color:" + row.BackgroundColor.IfEmpty(()=>Model.Settings.RowBackgroundColor) : "")"
+                                            @((!row.FullWidth && !string.IsNullOrEmpty(row.BackgroundImageX2)) ? "background=" + row.BackgroundImageX2 : "")>
+
+                                            @if (!row.FullWidth && !string.IsNullOrEmpty(row.BackgroundImage))
+                                            {
+                                                <!--[if gte mso 9]>
+                                                    <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px; background-repeat:no-repeat; background-position: center;">
+                                                    <v:fill type="tile" src="@row.BackgroundImage" />
+                                                    <v:textbox style="mso-fit-shape-to-text: true" inset="0,0,0,0">
+                                                <![endif]-->
+                                            }
+
+                                            <table class="row__table">
+                                                <tr>
+                                                    @foreach (var column in row.Columns)
+                                                    {
+
+                                                        <td class="column @(row.StackOnSmallScreen ? "col-sm-12" : "")" width="[replaced]" style="width: @column.WidthInPercent%">
+
+                                                            @foreach (var control in column.Controls)
+                                                            {
+
+                                                                <!--[if mso | IE]>
+                                                                    <table class="block__table__ie" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%" width="@column.WidthInPixels">
+                                                                    <tr>
+                                                                    <td> <![endif]-->
+                                                                <table class="block__table">
+                                                                    <tr class="block__row">
+                                                                        <td class="block__cell" style="padding: @control.Padding">
+                                                                            
+                                                                            @{ 
+                                                                               var vm = new ControlWithEmailViewModel()
+                                                                               {
+                                                                                   Email = Model,
+                                                                                   Model = control
+                                                                               };
+                                                                            }
+                                                                            @Html.Partial(Model.ControlViewPaths[control.ControlTypeAlias], vm)
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                                <!--[if mso | IE]> </td>
+                                                                    </tr>
+                                                                    </table> <![endif]-->
+
+
+                                                            }
+
+                                                        </td>
+                                                    }
+
+
+                                                </tr>
+                                            </table>
+
+                                            @if (!row.FullWidth && !string.IsNullOrEmpty(row.BackgroundImage))
+                                            {
+                                                <!--[if gte mso 9]>
+                                                    </v:textbox>
+                                                    </v:rect>
+                                                <![endif]-->
+                                            }
+
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <!--[if mso | IE]> </td>
+                                    </tr>
+                                    </table> <![endif]-->
+
+
+                                @if (row.FullWidth && !string.IsNullOrEmpty(row.BackgroundImage))
+                                {
+                                    <!--[if gte mso 9]>
+                                        </v:textbox>
+                                        </v:rect>
+                                    <![endif]-->
+                                }
+                            </td>
+                        </tr>
+                    </table>
+
+                }
+
+            </td>
+        </tr>
+    </table>
+@*
+    <div style="display: none; white-space: nowrap; font-size: 15px; line-height: 0;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+*@
+    @if (NewsletterStudioConstants.BuildMode.IsDebugBuild)
+    {
+        @*
+        <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
+        <script>
+            console.log('NewsletterStudio: Started live-reload');
+        </script>
+        *@
+    }
+</body>
+
+</html>
