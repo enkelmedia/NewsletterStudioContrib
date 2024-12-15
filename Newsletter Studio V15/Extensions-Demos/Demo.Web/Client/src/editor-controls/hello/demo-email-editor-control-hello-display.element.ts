@@ -7,7 +7,7 @@ export class DemoEmailEditorHalloDisplayElement extends NsEmailEditorControlDisp
 {
     render(){
 
-        // Fetching the wrapperStyles (e.g. padding) form the base class
+        // Fetching the wrapperStyles (e.g. padding) from the base class
         const wrapperStyles =
         {
             ...this.getWrapperStyleMap(this.model)
