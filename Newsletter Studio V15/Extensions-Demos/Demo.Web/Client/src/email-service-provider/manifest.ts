@@ -6,7 +6,8 @@ const smtpCoolCompanyUi : ManifestEmailServiceProviderSettingsUi = {
   alias: "Cc.EmailServiceProviderSettings",
   element: () => import('./cool-email-email-service-provider-settings.element.js'),
   meta: {
-    alias : 'coolEmail' // this alias should match alias in IEmailServiceProvider-implementation
+    // this alias should match alias in IEmailServiceProvider-implementation
+    alias : 'coolEmail' 
   }
 };
 

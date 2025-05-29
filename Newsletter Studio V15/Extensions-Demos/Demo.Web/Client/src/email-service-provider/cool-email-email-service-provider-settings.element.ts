@@ -1,10 +1,8 @@
 import { UmbTextStyles } from '@umbraco-cms/backoffice/style';
-import { nsBindToValidation } from '@newsletterstudio/umbraco/forms';
 import { css, html, customElement, state } from '@newsletterstudio/umbraco/lit';
 import { NsEmailServiceProviderUiBase } from '@newsletterstudio/umbraco/extensibility';
-import {  WorkspaceManageValueFrontendModel } from '@newsletterstudio/umbraco/backend';
 import {NS_ADMINISTRATION_WORKSPACE_CONTEXT, NsAdministrationWorkspaceContext} from '@newsletterstudio/umbraco/administration';
-import { Observable } from '@umbraco-cms/backoffice/external/rxjs';
+import { umbBindToValidation } from '@umbraco-cms/backoffice/validation';
 
 @customElement('cool-email-email-service-provider-settings')
 export class CoolEmailServiceProviderSettingsElement extends NsEmailServiceProviderUiBase<CoolEmailServiceProviderSettings> {
@@ -13,15 +11,7 @@ export class CoolEmailServiceProviderSettingsElement extends NsEmailServiceProvi
   
   @state()
   workspaceKey? : string;
-
-  _baseUrl? : string;
-
-  /**
-   * A debounced observable of the workspace edit model so that we
-   * can avoid server-fetch until user stops typing
-   * */
-  debouncedBaseUrlChange? : Observable<WorkspaceManageValueFrontendModel>;
-
+  
   constructor() {
     super();
     
@@ -33,11 +23,14 @@ export class CoolEmailServiceProviderSettingsElement extends NsEmailServiceProvi
       });
 
     });
-
   }
   
+  /**
+   * Notice the name renderSettings(), the parameter provided will be an object will all settings
+   * @param settings 
+   * @returns 
+   */
   renderSettings(settings : CoolEmailServiceProviderSettings) {
-
     return html`
       <ns-property
         label="API Key"
@@ -48,7 +41,7 @@ export class CoolEmailServiceProviderSettingsElement extends NsEmailServiceProvi
                       name="cc_apiKey"
                       @change=${(e:Event)=>this.updateValueFromEvent('cc_apiKey',e)}
                       label="API Key"}
-                      ${nsBindToValidation(this,'$.cc_apiKey',settings.cc_apiKey)}
+                      ${umbBindToValidation(this,'$.cc_apiKey',settings.cc_apiKey)}
                       required></uui-input>
         </uui-form-layout-item>
       </ns-property>
