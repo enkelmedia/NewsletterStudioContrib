@@ -1,5 +1,6 @@
 import type { UmbBackofficeExtensionRegistry } from "@umbraco-cms/backoffice/extension-registry";
-import { manifests as editorControlManifests } from "./editor-controls/manifest";
+import { manifests as editorControlManifests } from "./editor-controls/manifest.js";
+import { manifests as emailServiceProviders} from './email-service-provider/manifest.js';
 
 const translationManifests : Array<UmbExtensionManifest> = [
 	{
@@ -17,6 +18,7 @@ export function registerManifest(registry : UmbBackofficeExtensionRegistry) {
 
     registry.registerMany([
 		...editorControlManifests,
-    ...translationManifests
+    	...translationManifests,
+		...emailServiceProviders
 	]);
 }

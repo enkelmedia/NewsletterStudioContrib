@@ -35,8 +35,9 @@
 
   <Target Name="PreBuildClient" BeforeTargets="PreBuild">
     <Message Text="Building Client files in the ./Client-folder" Importance="High" />
+    <Exec Command="node --version" WorkingDirectory="$(ProjectDir)Client" />
     <Exec Command="npm install" WorkingDirectory="$(ProjectDir)Client" />
-    <Exec Command="npm run build:dev" WorkingDirectory="$(ProjectDir)Client" />
+    <Exec Command="npm run build" WorkingDirectory="$(ProjectDir)Client" />
   </Target>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Message Text="Client side code was built." Importance="High" />
