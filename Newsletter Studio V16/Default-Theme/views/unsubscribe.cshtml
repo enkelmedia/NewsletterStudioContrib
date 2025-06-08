@@ -1,0 +1,35 @@
+﻿@model NewsletterStudio.Core.Frontend.Tracking.FrontendModels.UnsubscribeViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unsubscribe</title>
+    <style>
+        body {
+            font-family: Arial,Helvetica, 'sans-serif';
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+@if (Model.ShowConfirmation)
+{
+    <h1>Confirmation</h1>
+    <p>You have been unsubscribed</p>
+}
+else
+{
+    <h1>Unsubscribe</h1>
+    <p>
+        Are you sure that you want to unsubscribe?
+    </p>
+
+    using (Html.BeginForm("UnsubscribeConfirm", "NewsletterStudioTracking",method:FormMethod.Get))
+    {
+        @Html.HiddenFor(x => x.Token)
+        <button>Yes, please remove me</button>
+    }
+}
+
+</body>
+</html>

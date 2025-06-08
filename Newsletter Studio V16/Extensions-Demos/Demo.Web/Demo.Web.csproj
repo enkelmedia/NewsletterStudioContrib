@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+	  <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="App_Plugins\**\*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NewsletterStudio" Version="16.0.0-rc1" />
+    <PackageReference Include="NewsletterStudio.Core" Version="16.0.0-rc1" />
+    <PackageReference Include="Umbraco.Cms" Version="16.0.0-rc5" />
+    <PackageReference Include="uSync" Version="16.0.0-rc3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
+    <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
+    <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Razor files are needed for the backoffice to work correctly -->
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Remove RazorCompileOnBuild and RazorCompileOnPublish when not using ModelsMode InMemoryAuto -->
+    <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+  </PropertyGroup>
+
+  <Target Name="PreBuildClient" BeforeTargets="PreBuild">
+    <Message Text="Building Client files in the ./Client-folder" Importance="High" />
+    <Exec Command="node --version" WorkingDirectory="$(ProjectDir)Client" />
+    <Exec Command="npm install" WorkingDirectory="$(ProjectDir)Client" />
+    <Exec Command="npm run build" WorkingDirectory="$(ProjectDir)Client" />
+  </Target>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Message Text="Client side code was built." Importance="High" />
+  </Target>
+
+</Project>

@@ -1,0 +1,33 @@
+﻿{
+  "name": "Default",
+  "backgroundColor": "#F3F3F3",
+
+  "selectableColors": "#991BAD,#31D843,#8447FF,#0F2947,#0F2947,#ffffff,#000000",
+
+  "rowBackgroundColor": "#ffffff",
+
+  "controlButtonBackgroundColor": "#31D843",
+  "controlButtonTextColor": "#FFFFFF",
+  "controlButtonFontFamily": "Arial, 'Helvetica Neue', Helvetica, sans-serif",
+  "controlButtonSmallPadding" : "12px 25px",
+  "controlButtonSmallFontSize" : "16px",
+  "controlButtonMediumPadding" : "16px 35px",
+  "controlButtonMediumFontSize" : "18px",
+  "controlButtonLargePadding" : "20px 50px",
+  "controlButtonLargeFontSize" : "20px",
+
+  "controlTextTextColor": "#000000",
+  "controlTextLinkColor": "#8447FF",
+  "controlTextFontFamily": "Arial, 'Helvetica Neue', Helvetica, sans-serif",
+  "controlTextFontSize": "16px",
+
+  "controlTextHeading1FontFamily": "Arial, 'Helvetica Neue', Helvetica, sans-serif",
+  "controlTextHeading1FontSize": "32px",
+
+  "controlTextHeading2FontFamily": "Arial, 'Helvetica Neue', Helvetica, sans-serif",
+  "controlTextHeading2FontSize": "28px",
+
+  "controlTextHeading3FontFamily": "Arial, 'Helvetica Neue', Helvetica, sans-serif",
+  "controlTextHeading3FontSize": "24px"
+
+}

@@ -1,0 +1,19 @@
+{
+  "name": "ns-demo",
+  "private": true,
+  "version": "16.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build --emptyOutDir",
+    "watch": "tsc && vite build --watch",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@newsletterstudio/umbraco": "^16.0.0-rc1",
+    "@umbraco-cms/backoffice": "^16.0.0-rc5",
+    "lit": "^3.3.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}

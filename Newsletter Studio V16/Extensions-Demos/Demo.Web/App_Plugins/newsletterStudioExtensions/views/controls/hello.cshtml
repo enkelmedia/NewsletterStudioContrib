@@ -1,0 +1,11 @@
+@model NewsletterStudio.Core.Rendering.ViewModels.ControlWithEmailViewModel
+@{
+    var settings = Model.Email.Settings;
+}
+
+@if (Model.Model is Demo.Web.Extensions.EmailEditorControl.HelloEmailControlViewModel controlModel)
+{
+    <div>
+        @controlModel.Text
+    </div>
+}
