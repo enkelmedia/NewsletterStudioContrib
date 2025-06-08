@@ -1,9 +1,9 @@
-# Newsletter Studio - Extentions demo site
-This Umbraco-site contains examples of extensions and extension points for Newsletter Studio.
+# Newsletter Studio - Extensions demo site
+This Umbraco-site contains examples of extension points in Newsletter Studio. You can read more about the possibilities in our [documentation](https://www.newsletterstudio.org/documentation/package/15.0.0/getting-started/installation/).
 
 Clone/download the repository and start the website using
 
-```
+```bash
 dotnet run
 ```
 
@@ -12,4 +12,4 @@ The website is configured with unattended install and this default backoffice-us
 Email: admin@demo.com
 Pass: 1234567890
 
-**NOTE!** Since the Umbraco-database is created when you run the website the first time most of the extensions need to be activated/allowed in Administration -> Workspace. This goes for things like `Themes`, `Recipient List Providers`, `Merge Field Providers`.
+**NOTE!** Since a new Umbraco-database is created when you run the website the first time, you will need to go to the `Email`-section, then `Administration`, edit the default workspace and activate the extensions to see them in the UI. This is required to see extensions like `Themes`, `Recipient List Providers`, `Merge Field Providers` and more.
