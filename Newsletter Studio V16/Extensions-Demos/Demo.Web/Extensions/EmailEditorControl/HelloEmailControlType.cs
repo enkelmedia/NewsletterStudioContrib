@@ -33,8 +33,7 @@ public class HelloEmailControlType
 
     public async override Task<HelloEmailControlViewModel> DoUpdateUniqueViewModelAsync(
         HelloEmailControlViewModel model, 
-        IRecipientDataModel recipient,
-        RenderingContext context
+        RenderingUniqueContext context
         )
     {
         // This method is called once for every recipient, the "model" object 
@@ -42,13 +41,13 @@ public class HelloEmailControlType
         // Here we could update specific properties based on the recipient.
         // In our case we don't need to do this.
 
-        if (recipient is SubscriberRecipientDataModel subscriberRecipient)
+        if (context.Recipient is SubscriberRecipientDataModel subscriberRecipient)
         {
             // A Campaign in sending
             // Do something with SubscriberRecipientDataModel 
         }
 
-        if (recipient is TransactionalRecipientDataModel transactionalRecipient)
+        if (context.Recipient is TransactionalRecipientDataModel transactionalRecipient)
         {
             // A Transactional Email is sending
             // Do something with TransactionalRecipientDataModel 

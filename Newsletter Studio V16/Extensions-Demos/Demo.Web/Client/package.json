@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@newsletterstudio/umbraco": "^16.0.0-rc1",
-    "@umbraco-cms/backoffice": "^16.0.0-rc5",
+    "@newsletterstudio/umbraco": "^16.0.0",
+    "@umbraco-cms/backoffice": "^16.0.0",
     "lit": "^3.3.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
