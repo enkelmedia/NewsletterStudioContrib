@@ -1,0 +1,27 @@
+/**umb_name:Heading 1*/
+h1 {
+  font-size: 34px;
+  font-weight: normal;  
+}
+
+/**umb_name:Heading 2*/
+h2 {
+  font-size: 28px;
+  font-weight: normal;
+}
+
+/**umb_name:Heading 3*/
+h3 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+/**umb_name:Normal*/
+p {
+  font-size: 13px;
+}
+
+a {
+    pointer-events:none;
+    cursor:text;
+}

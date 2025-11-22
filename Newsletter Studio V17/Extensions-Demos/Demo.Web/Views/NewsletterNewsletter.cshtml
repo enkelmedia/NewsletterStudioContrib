@@ -1,0 +1,9 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = null;
+}
+<h1>Email</h1>
+<hr/>
+<h1>Newsletter: @Model.Name</h1>
+@Model.Value("bodyText")

@@ -1,0 +1,98 @@
+@using NewsletterStudio.Core.Models
+@using NewsletterStudio.Core.Public
+@using NewsletterStudio.Core.Public.Models
+@inject INewsletterStudioService NewsletterStudioService
+@{
+    /*
+    * Newsletter Studio Sign Up Example
+    *
+    * This is a fully functional signup example to add a recipient to a given Mailing List in Newsletter Studio.
+    * Use this as an inspiration for your implementation, a best practice would be to move the C#-code into e.g a "SurfaceController"
+    * or something similar.
+    *
+    * Please see the documentation for more details: https://www.newsletterstudio.org/documentation/
+    */
+
+    // Getting a mailing list to which we want to add the recipient.
+    // We could replace this example with the data from a "Mailing List Picker"
+    // that can be configured as a Data Type and used on a settings-node or similar.
+    var mailingList = NewsletterStudioService.GetMailingLists().FirstOrDefault();
+
+}
+@if (mailingList == null)
+{
+    <p>Cannot show signup when there are no mailing lists in the system.</p>
+    return;
+}
+
+@{
+    string errorMessage = "";
+    string showView = "signup"; // signup, double-opt-in, thank-you, error
+
+    if (Context.Request.Method.Equals("post", StringComparison.InvariantCultureIgnoreCase) && Context.Request.Form.ContainsKey("email"))
+    {
+        if (!NewsletterStudioService.IsValidEmail(Context.Request.Form["email"]!))
+        {
+            errorMessage = "Please enter a valid email";
+            goto render;
+        }
+
+        var addRecipientRequest = new AddRecipientRequest(Context.Request.Form["email"]!)
+            .ForWorkspace(mailingList.WorkspaceKey)
+            .WithSource("Signup Macro")
+            .WithName(Context.Request.Form["name"]!)
+            .SubscribeTo(mailingList.UniqueKey); // This will respect any double opt-in settings for the workspace. Use overload to set explicit status.
+
+        var result = NewsletterStudioService.AddRecipient(addRecipientRequest);
+
+        if (result.Success)
+        {
+            // Checking if the created subscription has status "Subscribe", if not double opt-in is required.
+            if (result.Value.Subscriptions.First().Status == SubscriptionStatus.Subscribed)
+            {
+                showView = "thank-you";
+            }
+            else
+            {
+                showView = "double-opt-in";
+            }
+        }
+        else
+        {
+            showView = "error";
+            errorMessage = result.Errors.ToString();
+        }
+
+    }
+
+    render:
+}
+
+
+
+@if (showView == "signup" || showView == "error")
+{
+    <form method="post">
+        <div>
+            <input type="text" name="name" placeholder="Name"/>
+        </div>
+        <div>
+            <input type="text" name="email" placeholder="Email"/>
+        </div>
+        <button>Sign me up</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <p style="color:red">@errorMessage</p>
+    }
+
+}
+else if(showView == "thank-you")
+{
+    <p>Thank you for signing up</p>
+}
+else if (showView == "double-opt-in")
+{
+    <p>Thank you for signing up! Please confirm your email by checking your inbox.</p>
+}

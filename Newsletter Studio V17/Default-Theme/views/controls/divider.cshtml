@@ -1,0 +1,19 @@
+@using Umbraco.Cms.Infrastructure.Security
+@model NewsletterStudio.Core.Rendering.ViewModels.ControlWithEmailViewModel
+
+@if (Model.Model is NewsletterStudio.Core.Editor.Controls.Divider.DividerEmailControlViewModel model)
+{
+    int lineThickness = model.LineThickness ?? this.Model.Email.Settings.ControlDividerLineThickness ?? 1;
+
+    string lineColor = string.IsNullOrEmpty(model.LineColor)
+        ? Model.Email.Settings.ControlDividerLineColor ?? "#c5c5c5"
+        : model.LineColor;
+
+    string rulerBorder = $"{lineThickness}px solid {lineColor}";
+
+    <table border="0" width="100%" cellpadding="0" cellspacing="0" style="background:transparent;">
+        <tr>
+            <td style="background:transparent; border-top: @(rulerBorder); height:@(lineThickness)px; line-height:@(lineThickness)px; width:100%; margin:0px 0px 0px 0px;">&nbsp;</td>
+        </tr>
+    </table>
+}
