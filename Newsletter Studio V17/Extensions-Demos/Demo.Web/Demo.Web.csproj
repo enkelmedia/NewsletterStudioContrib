@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NewsletterStudio" Version="17.0.0-rc1" />
-    <PackageReference Include="NewsletterStudio.Core" Version="17.0.0-rc1" />
-    <PackageReference Include="Umbraco.Cms" Version="17.0.0-rc3" />
-    <PackageReference Include="Umbraco.Cms.DevelopmentMode.Backoffice" Version="17.0.0-rc3" />
-    <PackageReference Include="uSync" Version="17.0.0-rc3" />
+    <PackageReference Include="NewsletterStudio" Version="17.0.0" />
+    <PackageReference Include="NewsletterStudio.Core" Version="17.0.0" />
+    <PackageReference Include="Umbraco.Cms" Version="17.0.0" />
+    <PackageReference Include="Umbraco.Cms.DevelopmentMode.Backoffice" Version="17.0.0" />
+    <PackageReference Include="uSync" Version="17.0.0" />
   </ItemGroup>
 
   <ItemGroup>
