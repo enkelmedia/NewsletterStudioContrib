@@ -8,8 +8,11 @@ Umbraco version: 15
 ## [Newsletter Studio 14](Newsletter%20Studio%20V14)
 Umbraco version: 14
 
+## [Newsletter Studio 13](Newsletter%20Studio%20V13)
+Umbraco version: 13
+
 ## [Newsletter Studio 12 & 13](Newsletter%20Studio%20V12)
-Umbraco version: 12 & 13
+Umbraco version: 12
 
 ## [Newsletter Studio 11](Newsletter%20Studio%20V11)
 Umbraco version: 11

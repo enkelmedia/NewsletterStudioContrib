@@ -1,0 +1,26 @@
+﻿@model NewsletterStudio.Core.Rendering.ViewModels.ControlWithEmailViewModel
+@if (Model.Model is NewsletterStudio.Core.Editor.Controls.Image.ImageEmailControlViewModel img)
+{
+    var width = img.ImageIsMaxWidth ? "100%" : img.ImageWidth.ToString();
+    var styleWidth = img.ImageIsMaxWidth ? "100%" : img.ImageWidth + "px !important";
+    
+    <table class="block__table">
+        <tr>
+            <td align="@img.Align">
+                @if (!string.IsNullOrEmpty(img.LinkUrl))
+                {
+                    <a href="@img.LinkUrl">
+                        <img src="@img.ImageUrl" border="0" alt="" class="img__block" width="@width" style="display: block; max-width: 100%; border: 0px; width: @styleWidth" />
+                    </a>
+                    
+                }
+                else
+                {
+                    <img src="@img.ImageUrl" border="0" alt="" class="img__block" width="@width" style="display: block; max-width: 100%; width: @styleWidth" />    
+                }
+            </td>
+            </tr>
+        </table>
+}
+
+

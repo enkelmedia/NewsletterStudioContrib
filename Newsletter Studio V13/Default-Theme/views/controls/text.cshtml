@@ -1,0 +1,9 @@
+﻿@model NewsletterStudio.Core.Rendering.ViewModels.ControlWithEmailViewModel
+
+@if (Model.Model is NewsletterStudio.Core.Editor.Controls.Text.TextEmailControlViewModel model)
+{
+    <div style="color:@(Model.Email.Settings.Get("controlTextTextColor"));">
+        @Html.Raw(model.Html)
+    </div>
+}
+
